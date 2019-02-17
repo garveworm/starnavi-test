@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'users',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -56,8 +57,13 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    'rest_framework.authentication.BasicAuthentication',
     ]
+}
+
+JWT_AUTH = {
+    'JWT_ALLOW_REFRESH': True,
 }
 
 ROOT_URLCONF = 'navi_test.urls'
