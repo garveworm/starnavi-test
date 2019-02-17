@@ -27,6 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
             """
             acc_info used to determine if my account still have available api calls,
             however it always return same number
+            link: https://hunter.io/api/v2/docs#account
             """
             acc_info = requests.get(f'https://api.hunter.io/v2/account?api_key={settings.EMAIL_HUNTER_API_KEY}')
             print(acc_info.json()['data'])
