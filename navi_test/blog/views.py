@@ -1,7 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
-
 from .serializers import PostSerializer, LikeSerializer
 from .models import Post, Like
 # Create your views here.

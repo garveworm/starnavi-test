@@ -1,9 +1,11 @@
 import requests
+from pyhunter import PyHunter
+
+from django.conf import settings
 
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-from django.conf import settings
-from pyhunter import PyHunter
+
 
 from .models import User
 
