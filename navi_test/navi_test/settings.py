@@ -22,6 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '5#nnn7sn5*=daxw(c#d(^nzinos&214r8xo55_3kg5a9s^d(q%'
 
+# API_KEYS
+EMAIL_HUNTER_API_KEY = "5ffd30d472abda62ee161eebdaf7be9bbbb1c6ea"
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
