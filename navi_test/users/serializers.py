@@ -1,3 +1,5 @@
+import requests
+
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from django.conf import settings
@@ -20,9 +22,21 @@ class UserSerializer(serializers.ModelSerializer):
         email = data.get('email')
         if email:
             hunter = PyHunter(settings.EMAIL_HUNTER_API_KEY)
+            """
+            acc_info used to determine if my account still have available api calls,
+            however it always return same number
+            """
+            acc_info = requests.get(f'https://api.hunter.io/v2/account?api_key={settings.EMAIL_HUNTER_API_KEY}')
+            print(acc_info.json()['data'])
+
+            if acc_info.json()['data']['calls']['available'] < 1:
+                return data
+
             email_data = hunter.email_verifier(email)
+
             if email_data.get('result') == 'undeliverable':
                 raise ValidationError('Email address does not exist')
+
         return data
 
     class Meta:

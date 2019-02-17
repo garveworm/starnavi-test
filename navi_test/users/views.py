@@ -29,8 +29,6 @@ class LoginUserView(CreateAPIView):
 
         user = authenticate(request, username=username, password=password)
 
-        print(username, password, user, authenticate)
-
         if user:
             login(request, user)
             payload = jwt_payload_handler(user)
@@ -39,7 +37,7 @@ class LoginUserView(CreateAPIView):
             serializer.is_valid(raise_exception=True)
 
             return Response(serializer.data, status=status.HTTP_200_OK)
-        # return Response(status=status.HTTP_401_UNAUTHORIZED)
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
 class SignupUserView(CreateAPIView):
